@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Dashboard – Sistema de Ventas</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              50:'#eef4ff',100:'#d9e6ff',200:'#b3caff',300:'#8caeff',400:'#6693ff',500:'#3f77ff',600:'#2a5fe0',700:'#1f47ad',800:'#18357f',900:'#13295f'
+            }
+          },
+          boxShadow:{soft:'0 10px 25px rgba(0,0,0,.08)',glow:'0 0 0 3px rgba(63,119,255,.25)'}
+        }
+      }
+    }
+  </script>
+  <style>
+    @keyframes slideIn{from{transform:translateX(-12px);opacity:0}to{transform:translateX(0);opacity:1}}
+    .animate-slideIn{animation:slideIn .25s ease-out}
+  </style>
+</head>
+<body class="min-h-screen bg-slate-50 text-slate-900">
+  <!-- Sidebar -->
+  <aside id="sidebar" class="fixed inset-y-0 left-0 z-30 w-72 -translate-x-full bg-white shadow-soft ring-1 ring-black/5 transition-transform md:translate-x-0">
+    <div class="flex items-center gap-2 border-b px-4 py-4">
+      <div class="grid h-10 w-10 place-items-center rounded-lg bg-slate-900 text-white">
+        <div class="leading-none text-center">
+          <div class="text-lg font-black">4</div>
+          <div class="text-[9px] tracking-widest">J's</div>
+        </div>
+      </div>
+      <div>
+        <p class="text-[10px] uppercase tracking-wider text-slate-500">Bunker 24/7</p>
+        <h1 class="text-sm font-semibold">Sistema de Ventas</h1>
+      </div>
+    </div>
+    <nav class="p-3">
+      <p class="mb-2 px-3 text-[10px] font-semibold uppercase tracking-widest text-slate-400">Menú</p>
+      <ul class="space-y-1">
+        <li><a class="group flex items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium text-slate-700 hover:bg-brand-50 hover:text-brand-700" href="principal.html"><svg class="h-5 w-5 text-slate-400 group-hover:text-brand-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 12l9-9 9 9"/><path d="M9 21V9h6v12"/></svg>Inicio</a></li>
+        <li><a class="group flex items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium text-slate-700 hover:bg-brand-50 hover:text-brand-700" href="#ventas"><svg class="h-5 w-5 text-slate-400 group-hover:text-brand-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 3h18v4H3z"/><path d="M5 7v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7"/><path d="M9 11h6"/></svg>Ventas</a></li>
+        <li><a class="group flex items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium text-slate-700 hover:bg-brand-50 hover:text-brand-700" href="productos.html"><svg class="h-5 w-5 text-slate-400 group-hover:text-brand-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z"/></svg>Productos</a></li>
+        <li><a class="group flex items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium text-slate-700 hover:bg-brand-50 hover:text-brand-700" href="proveedores.html"><svg class="h-5 w-5 text-slate-400 group-hover:text-brand-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M16 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>Proveedores</a></li>
+        <li><a class="group flex items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium text-slate-700 hover:bg-brand-50 hover:text-brand-700" href="#reportes"><svg class="h-5 w-5 text-slate-400 group-hover:text-brand-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 3v18h18"/><path d="M7 13l3 3 7-7"/></svg>Reportes</a></li>
+        <li><a class="group flex items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium text-slate-700 hover:bg-brand-50 hover:text-brand-700" href="#config"><svg class="h-5 w-5 text-slate-400 group-hover:text-brand-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 15.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7Z"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V22a2 2 0 1 1-4 0v-.09a1.65 1.65 0 0 0-1-1.51 1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H2a2 2 0 1 1 0-4h.09a1.65 1.65 0 0 0 1.51-1 1.65 1.65 0 0 0-.33-1.82l-.06-.06A2 2 0 1 1 6.04 3.4l.06.06a1.65 1.65 0 0 0 1.82.33H8a1.65 1.65 0 0 0 1-1.51V2a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V8c0 .66.39 1.26 1 1.51H22a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1Z"/></svg>Configuración</a></li>
+        <li><a class="group flex items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium text-slate-700 hover:bg-brand-50 hover:text-brand-700" href="usuarios.html"><svg class="h-5 w-5 text-slate-400 group-hover:text-brand-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M16 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>Usuarios</a></li>
+      </ul>
+    </nav>
+  </aside>
+
+  <!-- Contenedor principal -->
+  <div class="md:pl-72">
+    <!-- Topbar -->
+    <header class="sticky top-0 z-20 border-b bg-white/90 backdrop-blur supports-[backdrop-filter]:bg-white/70">
+      <div class="mx-auto flex max-w-7xl items-center gap-3 px-4 py-3">
+        <button id="btnMenu" class="rounded-md p-2 text-slate-600 hover:bg-slate-100 md:hidden" aria-label="Abrir menú">
+          <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+        </button>
+        <div class="relative flex-1 md:max-w-md">
+          <input type="text" placeholder="Buscar ventas, clientes, productos…" class="w-full rounded-lg border border-slate-300 bg-white pl-9 pr-3 py-2 text-sm outline-none placeholder-slate-400 focus:border-brand-400 focus:shadow-glow"/>
+          <svg class="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+        </div>
+        <button id="btnTheme" class="rounded-md p-2 text-slate-600 hover:bg-slate-100" title="Cambiar tema">
+          <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v1"/><path d="M12 20v1"/><path d="M3 12h1"/><path d="M20 12h1"/><path d="M5.6 5.6l.7.7"/><path d="m17.7 17.7.7.7"/><path d="M5.6 18.4l.7-.7"/><path d="m17.7 6.3.7-.7"/><circle cx="12" cy="12" r="4"/></svg>
+        </button>
+        <button class="relative rounded-md p-2 text-slate-600 hover:bg-slate-100" title="Notificaciones">
+          <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 8a6 6 0 1 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10 21h4"/></svg>
+          <span class="absolute -right-0.5 -top-0.5 h-2.5 w-2.5 rounded-full bg-rose-500"></span>
+        </button>
+      </div>
+    </header>
+
+    <!-- Contenido -->
+    <main class="mx-auto max-w-7xl px-4 py-6">
+      <!-- Tabla de órdenes -->
+      <section class="mt-6 rounded-2xl bg-white p-4 shadow-soft ring-1 ring-black/5" id="ventas">
+        <div class="items-center justify-between gap-3 sm:flex">
+          <h4 class="text-base font-semibold">Usuarios</h4>
+          <div class="mt-3 flex items-center gap-2 sm:mt-0">
+            <input id="filter" type="text" placeholder="Filtrar por cliente…" class="w-56 rounded-lg border border-slate-300 px-3 py-2 text-sm outline-none placeholder-slate-400 focus:border-brand-400 focus:shadow-glow"/>
+            <button class="rounded-lg bg-brand-600 px-3 py-2 text-sm font-semibold text-white hover:bg-brand-700">Exportar</button>
+          </div>
+        </div>
+        <div class="mt-4 overflow-x-auto">
+          <table class="w-full min-w-[720px] text-left text-sm">
+            <thead class="text-xs uppercase tracking-wider text-slate-500">
+              <tr>
+                <th class="px-3 py-2"># Usuario</th>
+                <th class="px-3 py-2">Nombre</th>
+                <th class="px-3 py-2">Apellido</th>
+                <th class="px-3 py-2">Fecha de Ingreso</th>
+                <th class="px-3 py-2">Estado</th>
+                <th class="px-3 py-2 text-right">Sueldo</th>
+                <th class="px-3 py-2 text-center">Acciones</th>
+              </tr>
+            </thead>
+            <tbody id="tbody" class="divide-y">
+              <!-- filas renderizadas por JS -->
+            </tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script>
+    // Toggle sidebar en móvil
+    const sidebar = document.getElementById('sidebar');
+    const btnMenu = document.getElementById('btnMenu');
+    btnMenu?.addEventListener('click', ()=>{
+      const hidden = sidebar.classList.contains('-translate-x-full');
+      sidebar.classList.toggle('-translate-x-full');
+      if(hidden){ sidebar.classList.add('animate-slideIn'); setTimeout(()=>sidebar.classList.remove('animate-slideIn'),250) }
+    });
+
+    // Tema claro/oscuro (simple)
+    const btnTheme = document.getElementById('btnTheme');
+    btnTheme.addEventListener('click', ()=>{
+      document.documentElement.classList.toggle('dark');
+      document.body.classList.toggle('bg-slate-900');
+      document.body.classList.toggle('text-slate-100');
+    });
+
+    // Datos mock para la tabla
+    const data = [
+      {id:'A-00001', cliente:'Juan', prod:'Sanchez', fecha:'05/08/2024', estado:'Activo', total:2200.00},
+      {id:'A-00002', cliente:'Pedro', prod:'Camargo', fecha:'02/05/2025', estado:'Activo', total:1200.00},
+      {id:'A-00003', cliente:'Luis', prod:'Rodriguez', fecha:'14/12/2024', estado:'Activo', total:1500.00},
+      {id:'A-00004', cliente:'Mayte', prod:'Veliz', fecha:'06/02/2024', estado:'Activo', total:3000.00},
+      {id:'A-00005', cliente:'Alonso', prod:'Cardenas', fecha:'01/08/2025', estado:'Inactivo', total:1350.00},
+      {id:'A-00006', cliente:'Maria', prod:'Quispe', fecha:'11/04/2024', estado:'Activo', total:1800.00}
+    ];
+
+    const tbody = document.getElementById('tbody');
+    const render = (rows)=>{
+      tbody.innerHTML = rows.map(r=>`
+        <tr class="hover:bg-slate-50">
+          <td class="px-3 py-3 font-medium">${r.id}</td>
+          <td class="px-3 py-3">${r.cliente}</td>
+          <td class="px-3 py-3">${r.prod}</td>
+          <td class="px-3 py-3">${r.fecha}</td>
+          <td class="px-3 py-3">
+            <span class="rounded-full px-2 py-1 text-xs font-semibold ${
+              r.estado==='Activo' ? 'bg-emerald-50 text-emerald-700' :
+              r.estado==='En Duda' ? 'bg-amber-50 text-amber-700' :
+              'bg-rose-50 text-rose-700'}">${r.estado}</span>
+          </td>
+          <td class="px-3 py-3 text-right font-semibold">S/ ${r.total.toFixed(2)}</td>
+          <td class="px-3 py-3 text-center">
+            <div class="inline-flex gap-2">
+              <button class="flex items-center gap-2 rounded-lg bg-blue-600 px-3 py-2 text-sm font-semibold text-white hover:bg-blue-700">
+                <i class="fa-solid fa-pen-to-square"></i> Editar
+              </button>
+              <button class="flex items-center gap-2 rounded-lg bg-rose-600 px-3 py-2 text-sm font-semibold text-white hover:bg-rose-700">
+                <i class="fa-solid fa-trash"></i> Eliminar
+              </button>
+            </div>
+          </td>
+        </tr>`).join('');
+    };
+    render(data);
+
+    // Filtro por cliente
+    document.getElementById('filter').addEventListener('input', (e)=>{
+      const q = e.target.value.toLowerCase();
+      const f = data.filter(d=>d.cliente.toLowerCase().includes(q));
+      render(f);
+    });
+  </script>
+</body>
+</html>

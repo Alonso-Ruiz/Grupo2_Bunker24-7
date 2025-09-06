@@ -1,0 +1,30 @@
+/* Utilidades compactas para recortar clases en el HTML */
+:root { --brand-400:#3385ff; --brand-600:#0066ff; }
+
+
+/* Inputs y botones */
+.input{width:100%;border:1px solid #cbd5e1;border-radius:.5rem;padding:.5rem .75rem;font-size:.875rem;outline:0;background:#fff;color:#0f172a}
+.input:focus{border-color:var(--brand-400);box-shadow:0 0 0 3px rgba(0,102,255,.25)}
+
+
+.btn{border-radius:.5rem;padding:.5rem 1rem;font-weight:600;font-size:.875rem}
+.btn-primary{background:var(--brand-600);color:#fff}
+.btn-primary:hover{background:#0047b3}
+.btn-outline{border:1px solid var(--brand-600);background:#fff;color:#0b3a8a}
+.btn-outline:hover{background:#eef4ff}
+
+
+.icon-btn{position:absolute;right:.5rem;top:50%;transform:translateY(-50%);padding:.25rem;color:#64748b}
+.icon-btn:hover{color:#334155}
+
+
+.card{border-radius:1rem;background:#fff;padding:1.5rem;box-shadow:0 10px 25px rgba(0,0,0,.08);border:1px solid rgba(0,0,0,.05)}
+
+
+/* Animación de error mínima */
+@keyframes shake{10%,90%{transform:translateX(-1px)}20%,80%{transform:translateX(2px)}30%,50%,70%{transform:translateX(-4px)}40%,60%{transform:translateX(4px)}}
+.shake{animation:shake .35s}
+
+
+/* Oculta ojo nativo Edge/IE para no duplicar */
+input[type="password"]::-ms-reveal, input[type="password"]::-ms-clear{display:none}

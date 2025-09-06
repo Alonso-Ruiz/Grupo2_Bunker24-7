@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Sistema de Ventas – Acceso</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: { brand: { 50: '#e6f0ff', 100: '#cce0ff', 200: '#99c2ff', 300: '#66a3ff', 400: '#3385ff', 500: '#0066ff', 600: '#0052cc', 700: '#003d99', 800: '#002966', 900: '#001433' } },
+                    boxShadow: { soft: '0 10px 25px rgba(0,0,0,.08)', glow: '0 0 0 3px rgba(0,102,255,.25)' }
+                }
+            }
+        };
+    </script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+    <link rel="stylesheet" href="assets/css/app.css" />
+</head>
+
+<body class="min-h-screen bg-white">
+    <header class="sticky top-0 z-10 w-full bg-brand-500 text-white shadow-soft">
+        <div class="mx-auto flex max-w-5xl items-center gap-2 px-3 py-2">
+            <svg class="h-5 w-5" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+                <path d="M15 2H1a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1V3a1 1 0 0 0-1-1ZM2 4h12v8H2V4Z" />
+            </svg>
+            <span class="text-sm font-semibold tracking-wide">SISTEMA DE INVENTARIO</span>
+        </div>
+    </header>
+
+    <main class="mx-auto grid max-w-5xl grid-cols-1 items-stretch gap-6 px-4 py-10 md:grid-cols-2">
+
+        <section class="order-2 md:order-1">
+            <div id="card" class="card relative h-full">
+                <div class="mb-6 flex items-center gap-3">
+                    <div class="grid h-12 w-12 place-items-center rounded-lg bg-brand-600 text-white">
+                        <div class="text-center leading-none">
+                           <i class="fa-brands fa-foursquare text-2xl" aria-label="Four J's"></i>
+                        </div>
+                    </div>
+                    <div>
+                        <p class="text-xs uppercase tracking-wider text-slate-500">Bunker 24/7</p>
+                        <h1 class="text-lg font-semibold">Panel de Acceso</h1>
+                    </div>
+                </div>
+
+                <form id="formLogin" class="space-y-4" autocomplete="off">
+                    <div>
+                        <label for="usuario" class="mb-1 block text-sm font-medium text-slate-700">Usuario</label>
+                        <input id="usuario" name="usuario" type="text" placeholder="Usuario" class="input" />
+                    </div>
+
+                    <div>
+                        <label for="pass" class="mb-1 block text-sm font-medium text-slate-700">Contraseña</label>
+                        <div class="relative">
+                            <input id="pass" name="pass" type="password" placeholder="Contraseña" class="input pr-10" />
+                            <button type="button" id="toggleLogin" class="icon-btn"
+                                aria-label="Mostrar u ocultar contraseña" aria-pressed="false">
+                                <i class="fa-solid fa-eye"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="mt-6 flex flex-wrap items-center gap-3">
+                        <button type="button" id="btnRegistrar" class="btn btn-outline inline-flex items-center gap-2">
+                            <i class="fa-solid fa-plus text-sm"></i>
+                            Registrar
+                        </button>
+                        <button type="submit" class="btn btn-primary inline-flex items-center gap-2">
+                            <i class="fa-solid fa-right-to-bracket text-sm"></i>
+                            Ingresar
+                        </button>
+                        <label class="ml-auto inline-flex items-center gap-2 text-xs text-slate-600">
+                            <input id="remember" type="checkbox" class="h-4 w-4 rounded border" />
+                            Recordarme
+                        </label>
+                    </div>
+                </form>
+
+                <p class="mt-6 text-center text-xs text-slate-400">© 2025 Four J's. Todos los derechos reservados.</p>
+            </div>
+        </section>
+
+        <aside class="order-1 hidden md:block md:order-2">
+            <div
+                class="h-full rounded-2xl bg-[url('img/fondoDesarrollo.jpg')] bg-cover bg-center ring-1 ring-black/5 shadow-soft">
+            </div>
+        </aside>
+    </main>
+
+    <!-- Modal Registro centrado -->
+    <div id="modal" class="fixed inset-0 z-20 hidden flex items-center justify-center bg-black/40 p-4">
+        <div class="w-full max-w-md card">
+            <div class="mb-4 flex items-center justify-between">
+                <h3 class="text-lg font-semibold">Crear cuenta</h3>
+                <button id="closeModal" class="rounded-md p-1.5 text-slate-500 hover:bg-slate-100">✕</button>
+            </div>
+            <div class="space-y-3">
+                <div>
+                    <label for="regName" class="mb-1 block text-sm font-medium text-slate-700">Nombre</label>
+                    <input id="regName" class="input" placeholder="Nombre" />
+                </div>
+                <div>
+                    <label for="regEmail" class="mb-1 block text-sm font-medium text-slate-700">Correo</label>
+                    <input id="regEmail" type="email" class="input" placeholder="correo@dominio.com" />
+                </div>
+                <div>
+                    <label for="regPass" class="mb-1 block text-sm font-medium text-slate-700">Crear contraseña</label>
+                    <div class="relative">
+                        <input id="regPass" type="password" class="input pr-10" placeholder="Mínimo 8 caracteres" />
+                        <button type="button" id="toggleReg" class="icon-btn" aria-label="Mostrar u ocultar contraseña"
+                            aria-pressed="false">
+                            <i class="fa-solid fa-eye"></i>
+                        </button>
+                    </div>
+                    <div class="mt-2 space-y-1">
+                        <div aria-hidden class="h-2 overflow-hidden rounded-full bg-slate-200">
+                            <div id="progressReg" class="h-full w-0 rounded-full bg-rose-500"></div>
+                        </div>
+                        <p id="progressRegLabel" class="text-xs text-slate-500">Introduce una contraseña</p>
+                    </div>
+                </div>
+                <button class="btn btn-primary w-full">Registrar</button>
+            </div>
+        </div>
+    </div>
+    <script src="assets/js/app.js"></script>
+</body>
+</html>
